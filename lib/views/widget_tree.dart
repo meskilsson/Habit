@@ -18,8 +18,23 @@ class WidgetTree extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Flutter Mapp',
+          'Habit',
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              isDarkModeNotifier.value = !isDarkModeNotifier.value;
+            },
+            icon: ValueListenableBuilder(
+              valueListenable: isDarkModeNotifier,
+              builder: (context, isDarkMode, child) {
+                return Icon(
+                  isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                );
+              },
+            ),
+          ),
+        ],
       ),
       body: ValueListenableBuilder(
         valueListenable: selectedPageNotifier,
