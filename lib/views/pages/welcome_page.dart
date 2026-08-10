@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:habit/data/constants.dart';
 import 'package:habit/views/widget_tree.dart';
-import 'package:habit/views/widgets/hero_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -13,7 +14,11 @@ class WelcomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            HeroWidget(),
+            Text(
+              'Habit',
+              style: KTextStyle.titleTealText,
+            ),
+            Lottie.asset('assets/lotties/welcome.json'),
             FilledButton(
               onPressed: () {
                 Navigator.pushReplacement(
