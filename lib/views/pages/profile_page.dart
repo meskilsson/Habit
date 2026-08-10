@@ -12,6 +12,8 @@ class _ProfilePageState extends State<ProfilePage> {
   bool? isChecked = false;
   bool isSwitched = false;
   double sliderValue = 0.0;
+  String? menuItem = 'e1';
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -26,6 +28,28 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               onEditingComplete: () {
                 setState(() {});
+              },
+            ),
+            DropdownButton(
+              value: menuItem,
+              items: [
+                DropdownMenuItem(
+                  value: 'e1',
+                  child: Text('Element 1'),
+                ),
+                DropdownMenuItem(
+                  value: 'e2',
+                  child: Text('Element 2'),
+                ),
+                DropdownMenuItem(
+                  value: 'e3',
+                  child: Text('Element 3'),
+                ),
+              ],
+              onChanged: (String? value) {
+                setState(() {
+                  menuItem = value;
+                });
               },
             ),
             Text(controller.text),
