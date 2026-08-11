@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habit/data/constants.dart';
-import 'package:habit/views/widget_tree.dart';
+import 'package:habit/views/pages/login_page.dart';
 import 'package:lottie/lottie.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -14,18 +13,43 @@ class WelcomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            Text(
-              'Habit',
-              style: KTextStyle.titleTealText,
+            FittedBox(
+              child: Text(
+                'Habit',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50.0,
+                  letterSpacing: 50.0,
+                ),
+              ),
             ),
             Lottie.asset('assets/lotties/welcome.json'),
             FilledButton(
+              style: FilledButton.styleFrom(
+                minimumSize: Size(double.infinity, 40.0),
+              ),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return WidgetTree();
+                      return LoginPage();
+                    },
+                  ),
+                );
+              },
+              child: Text('Get Started'),
+            ),
+            TextButton(
+              style: TextButton.styleFrom(
+                minimumSize: Size(double.infinity, 40.0),
+              ),
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginPage();
                     },
                   ),
                 );
