@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit/data/constants.dart';
+import 'package:habit/views/pages/course_page.dart';
 import 'package:habit/views/widgets/container_widget.dart';
 import 'package:habit/views/widgets/hero_widget.dart';
 
@@ -21,6 +22,7 @@ class HomePage extends StatelessWidget {
           children: [
             HeroWidget(
               title: 'Habit',
+              nextPage: CoursePage(),
             ),
             ...List.generate(
               list.length,
