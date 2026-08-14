@@ -17,14 +17,14 @@ class OnboardingPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: .center,
               children: [
-                Lottie.asset('assets/lotties/welcome.json', height: 400.0),
-
+                Lottie.asset('assets/lotties/hi.json', height: 400.0),
                 SizedBox(height: 20.0),
                 Text(
-                  'Habit :) :)',
+                  'Ooga and booga',
                   style: KTextStyle.descriptionText,
                   textAlign: TextAlign.justify,
                 ),
+                SizedBox(height: 20.0),
                 FilledButton(
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(double.infinity, 40.0),

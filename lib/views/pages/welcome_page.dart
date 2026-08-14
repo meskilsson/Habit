@@ -26,7 +26,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Lottie.asset('assets/lotties/welcome.json', height: 400.0),
+                Lottie.asset('assets/lotties/coffee.json', height: 400.0),
                 FilledButton(
                   style: FilledButton.styleFrom(
                     minimumSize: Size(double.infinity, 40.0),
