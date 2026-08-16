@@ -5,8 +5,6 @@ import 'package:habit/views/widgets/hero_widget.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-Activity? activity;
-
 class CoursePage extends StatefulWidget {
   const CoursePage({super.key});
 
@@ -17,18 +15,8 @@ class CoursePage extends StatefulWidget {
 class _CoursePageState extends State<CoursePage> {
   @override
   void initState() {
-    loadActivity();
+    getActivity();
     super.initState();
-  }
-
-  Future<void> loadActivity() async {
-    final result = await getActivity();
-
-    setState(
-      () {
-        activity = result;
-      },
-    );
   }
 
   Future<Activity> getActivity() async {
@@ -51,16 +39,32 @@ class _CoursePageState extends State<CoursePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          children: [
-            HeroWidget(
-              title: 'Habit',
-            ),
-            Text(activity?.accessibility ?? 'Loading...'),
-          ],
-        ),
+      body: FutureBuilder(
+        future: getActivity(),
+        builder: (context, AsyncSnapshot snapshot) {
+          Widget widget;
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            widget = Center(child: CircularProgressIndicator());
+          }
+
+          if (snapshot.hasData) {
+            Activity activity = snapshot.data;
+            widget = Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                children: [
+                  HeroWidget(
+                    title: activity.activity,
+                  ),
+                  Text(activity.activity),
+                ],
+              ),
+            );
+          } else {
+            widget = Center(child: Text('Error'));
+          }
+          return widget;
+        },
       ),
     );
   }

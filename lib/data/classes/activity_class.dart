@@ -3,6 +3,7 @@ class Activity {
   final double availability;
   final String type;
   final int participants;
+  final double price;
   final String accessibility;
   final String duration;
   final bool kidFriendly;
@@ -15,6 +16,7 @@ class Activity {
     required this.availability,
     required this.type,
     required this.participants,
+    required this.price,
     required this.accessibility,
     required this.duration,
     required this.kidFriendly,
@@ -24,19 +26,32 @@ class Activity {
   });
 
   factory Activity.fromJson(Map<String, dynamic> json) {
-    final repository = json['repository'] as String?;
-
-    return Activity(
-      activity: json['activity'] as String,
-      availability: (json['availability'] as num).toDouble(),
-      type: json['type'] as String,
-      participants: json['participants'] as int,
-      accessibility: json['accessibility'] as String,
-      duration: json['duration'] as String,
-      kidFriendly: json['kidFriendly'] as bool,
-      link: json['link'] as String,
-      key: json['key'] as String,
-      repository: repository != null ? Uri.tryParse(repository) : null,
-    );
+    return switch (json) {
+      {
+        'activity': String activity,
+        'availability': num availability,
+        'type': String type,
+        'participants': int participants,
+        'price': num price,
+        'accessibility': String accessibility,
+        'duration': String duration,
+        'kidFriendly': bool kidFriendly,
+        'link': String link,
+        'key': String key,
+      } =>
+        Activity(
+          activity: activity,
+          availability: availability.toDouble(),
+          type: type,
+          participants: participants,
+          price: price.toDouble(),
+          accessibility: accessibility,
+          duration: duration,
+          kidFriendly: kidFriendly,
+          link: link,
+          key: key,
+        ),
+      _ => throw const FormatException('Failed to load activity.'),
+    };
   }
 }
