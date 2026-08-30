@@ -7,15 +7,37 @@ namespace HabitApi.Controllers;
 [Route("api/[controller]")]
 public class ActivitiesController : ControllerBase
 {
-    [HttpGet]
-    public ActionResult<Activity> GetActivity()
-    {
-        var activity = new Activity
+    private static readonly List<Activity> activities =
+    [
+        new Activity
         {
             Id = 1,
-            Name = "Go for a 30 minute walk",
+            Name = "Go for a walk",
             IsCompleted = false
-        };
+        },
+        new Activity
+        {
+            Id = 2,
+            Name = "Read for 30 minutes",
+            IsCompleted = true
+        }
+    ];
+
+    [HttpGet]
+    public ActionResult<List<Activity>> GetActivities()
+    {
+        return Ok(activities);
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<Activity> GetActivity(int id)
+    {
+        var activity = activities.FirstOrDefault(a => a.Id == id);
+
+        if (activity == null)
+        {
+            return NotFound();
+        }
 
         return Ok(activity);
     }

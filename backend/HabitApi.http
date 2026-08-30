@@ -1,6 +1,23 @@
-@HabitApi_HostAddress = http://localhost:5088
+@HabitApi_HostAddress = http://localhost:5089/api
 
 GET {{HabitApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+// GET / all activities
+
+{{HabitApi_HostAddress}}/activities
+
+###
+
+//GET / activity id
+{{HabitApi_HostAddress}}/activities/2
+
+###
+
+//GET / activity notfound
+
+{{HabitApi_HostAddress}}/activities/999
+
+
