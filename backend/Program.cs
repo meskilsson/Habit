@@ -1,4 +1,20 @@
+using HabitApi.Data;
+using Microsoft.EntityFrameworkCore;
+using HabitApi.Services.Activities;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString =
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException(
+        "Connection string 'DefaultConnection' was not found."
+    );
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(connectionString)
+);
+
+builder.Services.AddScoped<IActivityService, ActivityService>();
 
 // Add services to the container.
 
@@ -19,5 +35,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGet("/", () => "Hello World");
 
 app.Run();

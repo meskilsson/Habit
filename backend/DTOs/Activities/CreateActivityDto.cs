@@ -1,8 +1,7 @@
-namespace HabitApi.Models;
+namespace HabitApi.DTOs.Activities;
 
-public class Activity
+public class CreateActivityDto
 {
-    public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public bool IsCompleted { get; set; }
 }

@@ -20,4 +20,10 @@ Accept: application/json
 
 {{HabitApi_HostAddress}}/activities/999
 
+###
+
+//POST / activity
+
+{{HabitApi_HostAddress}}
+
 
