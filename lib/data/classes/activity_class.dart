@@ -1,57 +1,19 @@
 class Activity {
-  final String activity;
-  final double availability;
-  final String type;
-  final int participants;
-  final double price;
-  final String accessibility;
-  final String duration;
-  final bool kidFriendly;
-  final String link;
-  final String key;
-  final Uri? repository;
+  final int id;
+  final String name;
+  final bool isCompleted;
 
   Activity({
-    required this.activity,
-    required this.availability,
-    required this.type,
-    required this.participants,
-    required this.price,
-    required this.accessibility,
-    required this.duration,
-    required this.kidFriendly,
-    required this.link,
-    required this.key,
-    this.repository,
+    required this.id,
+    required this.name,
+    required this.isCompleted,
   });
 
   factory Activity.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
-      {
-        'activity': String activity,
-        'availability': num availability,
-        'type': String type,
-        'participants': int participants,
-        'price': num price,
-        'accessibility': String accessibility,
-        'duration': String duration,
-        'kidFriendly': bool kidFriendly,
-        'link': String link,
-        'key': String key,
-      } =>
-        Activity(
-          activity: activity,
-          availability: availability.toDouble(),
-          type: type,
-          participants: participants,
-          price: price.toDouble(),
-          accessibility: accessibility,
-          duration: duration,
-          kidFriendly: kidFriendly,
-          link: link,
-          key: key,
-        ),
-      _ => throw const FormatException('Failed to load activity.'),
-    };
+    return Activity(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      isCompleted: json['isCompleted'] as bool,
+    );
   }
 }
