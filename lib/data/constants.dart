@@ -23,8 +23,6 @@ class KTextStyle {
 }
 
 class KValue {
-  static const String basicLayout = 'Basic Layout';
-  static const String cleanUi = 'Clean Ui';
-  static const String fixBugs = 'Fix Bugs';
-  static const String keyConcepts = 'Key Concepts';
+  static const String activities = 'Activities';
+  static const String createActivities = 'Create Activities';
 }
