@@ -12,12 +12,18 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Row(
-        children: [
-          Center(
-            child: Text('Activities Page'),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Row(
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  Text('ooga'),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
