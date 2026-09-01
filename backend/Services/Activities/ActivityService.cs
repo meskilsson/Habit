@@ -17,7 +17,9 @@ public class ActivityService : IActivityService
 
     public async Task<List<Activity>> GetAllAsync()
     {
-        return await _context.Activities.ToListAsync();
+        return await _context.Activities
+        .OrderBy(activity => activity.Id)
+        .ToListAsync();
     }
 
     public async Task<Activity?> GetByIdAsync(int id)
