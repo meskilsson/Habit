@@ -14,4 +14,6 @@ public interface IActivityService
 
     Task<bool> DeleteAsync(int id);
 
+    Task<int> DeleteAllAsync();
+
 }

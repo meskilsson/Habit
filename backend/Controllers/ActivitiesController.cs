@@ -77,5 +77,11 @@ public class ActivitiesController : ControllerBase
         return NoContent();
     }
 
+    [HttpDelete]
+    public async Task<IActionResult> DeleteAllActivities()
+    {
+        await _activityService.DeleteAllAsync();
 
+        return NoContent();
+    }
 }

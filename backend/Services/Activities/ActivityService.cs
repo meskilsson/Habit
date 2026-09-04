@@ -76,4 +76,15 @@ public class ActivityService : IActivityService
 
         return true;
     }
+
+    public async Task<int> DeleteAllAsync()
+    {
+        var activities = await _context.Activities.ToListAsync();
+
+        _context.Activities.RemoveRange(activities);
+
+        await _context.SaveChangesAsync();
+
+        return activities.Count;
+    }
 }
